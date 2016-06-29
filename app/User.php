@@ -32,4 +32,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class);
     }
+    
+      public function kalas()
+    {
+        return $this->belongsToMany('App\Kala');
+    }
+    
+    
 }
