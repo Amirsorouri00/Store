@@ -23,6 +23,24 @@
         .fa-btn {
             margin-right: 6px;
         }
+        
+        
+        .pclass{
+             width: 175px;
+            height: 175px;
+        }
+        .image-circle{
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    border: 4px solid #FFF;
+    margin: 10px;
+}
+
+        ///
+        
+        
+        
     </style>
 </head>
 <body id="app-layout">
