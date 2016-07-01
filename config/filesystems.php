@@ -47,7 +47,11 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-
+       
+        'kala'=>[
+            'driver'=>'local',
+            'root'=>public_path('kala'),
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
