@@ -43,7 +43,7 @@ class mcontroller extends Controller
     $fileName = time().''.$request->file('photo')->getClientOriginalName();
            
             
-        
+        $fileName = str_replace(' ', '_', $fileName);
          
       
         $kala=new Kala;
@@ -94,7 +94,7 @@ class mcontroller extends Controller
        if ($request->hasFile('photo')) {
                          $file = $request->file('photo');
     $fileName = time().''.$request->file('photo')->getClientOriginalName();
-     
+       $fileName = str_replace(' ', '_', $fileName);
            
             Storage::disk('kala')->put(
             $fileName,

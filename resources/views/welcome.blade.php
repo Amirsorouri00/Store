@@ -24,7 +24,7 @@
                  <div class="panel-heading" >
             <div class="row" >
                 
-                
+                <a href={{ asset('kala/'.$post->pic_name) }}> Download pic</a>
          <form method="get" action="/page2">
 <button  type="submit"   class=" col-md-offset-1 btn btn-success  col-md-2 " style="padding: 6px !important;" ><i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i> </button>
                 </form>
