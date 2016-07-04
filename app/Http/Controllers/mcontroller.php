@@ -40,23 +40,13 @@ class mcontroller extends Controller
          
        
         $file = $request->file('photo');
-    $fileName = time().''.$request->file('photo')->getClientOriginalName();
-           
-            
+        $fileName = time().''.$request->file('photo')->getClientOriginalName();
         $fileName = str_replace(' ', '_', $fileName);
-         
-      
         $kala=new Kala;
-      
             $kala->name=$request->name;
-     
         $kala->details=$request->details;
-        
         $kala->pic_name=$fileName;
-    
             $kala->save();
- 
-           
        
          Storage::disk('kala')->put(
            $kala->pic_name,
@@ -71,48 +61,47 @@ class mcontroller extends Controller
     
     public function geteditpage(Request $request,Kala $kala)
     {
-        
         return view('editpage', ['kala' => $kala]);
     }
+
     public function editkala (Request $request,Kala $kala)
     {
+        //dd($request);
+        $new = new Kala();
           $rules = [
-        'name' => 'required|max:255',
-        'details' => 'required',
-      
-    ];
-    $v = Validator::make($request->all(), $rules);
-    if($v->fails()){
- 
-        return redirect()->back()->withErrors($v->errors())->withInput($request->except('photo'));
-     
-    } 
-        
+            'name' => 'required|max:255',
+            'details' => 'required',
+          ];
+          $v = Validator::make($request->all(), $rules);
+          if($v->fails()){
+              return redirect()->back()->withErrors($v->errors())->withInput($request->except('photo'));
+          }
+
+        //$Kala doesn't save the new edited variable exists in $request its because of if statement below
         $kala->name=$request->name;
         $kala->details=$request->details;
-        
-       if ($request->hasFile('photo')) {
-                         $file = $request->file('photo');
-    $fileName = time().''.$request->file('photo')->getClientOriginalName();
-       $fileName = str_replace(' ', '_', $fileName);
-           
-            Storage::disk('kala')->put(
-            $fileName,
-            file_get_contents($request->file('photo')->getRealPath())
-        );
-              if(  Storage::disk('kala')->exists($kala->pic_name))
-      {Storage::disk('kala')->delete($kala->pic_name);}
-           $kala->pic_name=$fileName;
-           
-           
-    //
-}
 
-           $kala->save();
+        //This($name) has the new edited variable
+        $new->name = $request->name;
+        $new->details = $request->details;
+        $new->save();
+        //($kala->details);
         
-            
-       return  redirect  ('/');
-        
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = time() . '' . $request->file('photo')->getClientOriginalName();
+            $fileName = str_replace(' ', '_', $fileName);
+
+            Storage::disk('kala')->put(
+                $fileName,
+                file_get_contents($request->file('photo')->getRealPath())
+            );
+            if (Storage::disk('kala')->exists($kala->pic_name)) {
+                Storage::disk('kala')->delete($kala->pic_name);
+            }
+            $kala->pic_name = $fileName;
+            $kala->save();
+            return redirect('/');
+        }
     }
-    
 }

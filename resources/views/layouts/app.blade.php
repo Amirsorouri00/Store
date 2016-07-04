@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-< meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Laravel Quickstart - Intermediate</title>
 
     <!-- Fonts -->
@@ -23,6 +23,24 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        #box {
+            width: 400px;
+            overflow: auto;
+            padding: 2px;
+            text-align: justify;
+            background: white;
+
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .highlight {
+            color:#888;
+        }
         
         
         .pclass{
@@ -30,17 +48,13 @@
             height: 175px;
         }
         .image-circle{
-    border-radius: 50%;
-    width: 175px;
-    height: 175px;
-    border: 4px solid #FFF;
-    margin: 10px;
-}
+            border-radius: 50%;
+            width: 175px;
+            height: 175px;
+            border: 4px solid #FFF;
+            margin: 10px;
+        }
 
-        ///
-        
-        
-        
     </style>
 </head>
 <body id="app-layout">
