@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
         return view('welcome');
-    })->middleware('guest');
+    });
 
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
@@ -39,4 +39,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::delete('/del/{kala}','mcontroller@del');
     Route::get('/edit/{kala}','mcontroller@geteditpage');
     Route::post('/editkala/{kala}','mcontroller@editkala');
+    Route::post('/addinbasket/{kala}','mcontroller@addinbasket');
+    Route::get('/cartpage','mcontroller@cartpage');
 });

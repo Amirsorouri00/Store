@@ -76,10 +76,11 @@
                     </p>
                 </div>
             </div>
-
+<input type="text" name="details">
             <button class="btn btn-info col-md-offset-11">
                 Submit
             </button>
+           
         </form>
 
     </div>

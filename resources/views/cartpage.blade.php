@@ -2,7 +2,7 @@
 @section('content')
 @inject('Kala','App\Kala')
 <?php
-    $posts   =$Kala::all();
+    $posts   =Auth::user()->kalas()->get();
 
 ?>
 <div class="container">
