@@ -2,14 +2,13 @@
 @section('content')
 @inject('Kala','App\Kala')
 <?php
-        $name = null;
-        $details = null;
+    $name = null;
+    $details = null;
 ?>
 
 @section('content')
 
     <div class="container">
-
         @include('common.errors')
         <div class="container">
             <div class="panel panel-default">
@@ -21,6 +20,7 @@
 
         <form action="/addkala" method="post"  enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="details" value="">
 
             <div class="row col-md-12">
 
@@ -69,18 +69,13 @@
             <div  class="row col-md-12">
                 <label  class="col-md-2 control-label">Product Description</label>
                 <div class="unselectable col-md-10">
-                    <p class="col-md-9 form-control conttext" contenteditable="true" style="width:100%;  height:100%;">
-
-                        {!! $details !!}
-
-                    </p>
+                    <p class="col-md-9 form-control conttext" contenteditable="true" style="width:100%;  height:100%;"></p>
                 </div>
             </div>
-<input type="text" name="details">
-            <button class="btn btn-info col-md-offset-11">
+
+            <button class="btn btn-info col-md-offset-11" onclick="getval();">
                 Submit
             </button>
-           
         </form>
 
     </div>
@@ -98,6 +93,11 @@
          var text = selObj.toString();
          alert(text);
          });*/
+
+        function getval(){
+            var tmp = $('.conttext').text();
+            $('input[name="details"]').attr('value',tmp);
+        }
 
         function size(){
             //var font = $('document').getElementById('#size');

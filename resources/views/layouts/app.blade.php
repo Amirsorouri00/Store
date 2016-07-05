@@ -72,7 +72,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Task List
+                    Little Store
                 </a>
             </div>
 
@@ -83,6 +83,9 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="{{ url('/addkala') }}">Add Product</a></li>
+                    <li><a href="{{ url('/') }}">Home Page</a></li>
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
